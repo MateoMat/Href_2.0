@@ -8,15 +8,22 @@
             <tr>
                 <th>Id</th>
                 <td>{{ user.id }}</td>
+
             </tr>
             <tr>
                 <th>Name</th>
-                <td>{{ user.name }}</td>
+                <td>{{ user.username }}</td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>{{ user.email }}</td>
+                <tr>
+                <th>Stanowisko</th>
                 <td>{{ user.structure.position }}</td>
+            </tr>
+            <tr>
+                <th>Symbol w strukturze</th>
+                <td>{{ user.structure }}</td>
             </tr>
         </tbody>
     </table>

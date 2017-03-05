@@ -1,8 +1,13 @@
 Hello World!!!
 
-{% for i in users %}
 
-    {#<p> {{ i. }} </p>#}
+
+
+{% for user in users %}
+
+
+    {% if user.structure.position is defined %}
+        {{ user.structure.position }}
+        {% endif %}
+
 {% endfor %}
-
-{#{{ users[0].structure.symbol }}#}

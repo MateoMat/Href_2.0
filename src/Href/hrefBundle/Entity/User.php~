@@ -30,9 +30,6 @@ class User extends BaseUser
     }
 
 
-
-
-
     /**
      * Set structure
      *
