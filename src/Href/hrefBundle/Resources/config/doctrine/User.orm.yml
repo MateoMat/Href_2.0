@@ -1,0 +1,19 @@
+Href\hrefBundle\Entity\User:
+  type: entity
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+
+  manyToOne:
+    structure:
+      targetEntity: Structure
+      inversedBy: users
+
+  fields:
+    name: {type: string}
+    email: {type: string}
+
+

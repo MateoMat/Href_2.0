@@ -1,0 +1,22 @@
+<?php
+
+namespace Href\hrefBundle\Entity;
+
+
+class Structure
+{
+    private $users;
+
+    private $id;
+    private $position;
+    private $symbol;
+    private $superior;
+    private $level;
+
+
+    public  function __toString()
+    {
+       return (string)$this->id;
+    }
+
+}

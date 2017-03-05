@@ -1,0 +1,11 @@
+href_user:
+    resource: "@hrefBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+href_structure:
+    resource: "@hrefBundle/Resources/config/routing/structure.yml"
+    prefix:   /structure
+
+
+
+

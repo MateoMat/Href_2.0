@@ -1,0 +1,15 @@
+<?php
+
+namespace Href\hrefBundle\Entity;
+
+
+class User
+{
+    private $structure;
+
+    private $id;
+    private $name;
+    private $email;
+
+
+}
