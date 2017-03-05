@@ -1,7 +1,3 @@
-user_index:
-    path:     /
-    defaults: { _controller: "hrefBundle:User:index" }
-    methods:  GET
 
 user_show:
     path:     /{id}/show

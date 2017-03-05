@@ -12,8 +12,8 @@ Href\hrefBundle\Entity\User:
       targetEntity: Structure
       inversedBy: users
 
-  fields:
-    name: {type: string}
-    email: {type: string}
+
+
+
 
 

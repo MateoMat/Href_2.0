@@ -3,21 +3,12 @@
 namespace Href\hrefBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Href\hrefBundle\Entity\User;
-use Href\hrefBundle\Entity\Structure;
-
-
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/")
-     */
+
     public function indexAction()
     {
-
-
         $users=$this->getDoctrine()->getRepository('hrefBundle:User');
         $users=$users->findAll();
 

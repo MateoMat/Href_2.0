@@ -6,6 +6,9 @@ href_structure:
     resource: "@hrefBundle/Resources/config/routing/structure.yml"
     prefix:   /structure
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
-
-
+default:
+    path: /
+    defaults:  { _controller: hrefBundle:Default:index }
