@@ -13,9 +13,9 @@ class DefaultController extends Controller
         $users=$users->findAll();
 
         $structure=$this->getDoctrine()->getRepository('hrefBundle:Structure');
-        $structure=$structure->findAll();
+        $structures=$structure->findAll();
 
 
-        return $this->render('hrefBundle:Default:index.html.twig',array('users'=>$users,'structure'=>$structure));
+        return $this->render('hrefBundle:Default:index.html.twig',array('users'=>$users,'structures'=>$structures));
     }
 }

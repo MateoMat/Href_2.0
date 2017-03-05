@@ -3,6 +3,7 @@
 namespace Href\hrefBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 
 class User extends BaseUser
@@ -17,6 +18,7 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
+        $this->structure=new ArrayCollection();
     }
 
     /**
@@ -52,4 +54,6 @@ class User extends BaseUser
     {
         return $this->structure;
     }
+
+
 }

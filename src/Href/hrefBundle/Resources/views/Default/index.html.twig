@@ -1,13 +1,121 @@
-Hello World!!!
+{% extends 'base.html.twig' %}
+
+{% block title %}HRef - strona główna{% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/href/css/home.css') }}"/>
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <table class="table table-bordered">
+
+
+            {% for structure in structures %}
+                {% if structure.level == 1 %}
+                    <tr class="jumbotron">
+                        <td><h3>{{ structure.position }}</h3></td>
+                    </tr>
+                    {% if structure.users is empty %}
+                        <tr>
+                            <td><p>Wakat</p></td>
+                        </tr>
+                    {% else %}
+                        {% for user in structure.users %}
+                            {% if user.email is defined %}
+                                <tr>
+                                    <td>{{ user.email }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <tr>
+                <td style="text-align: center;" colspan="1">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+            </tr>
+
+
+            {% for structure in structures %}
+                {% if structure.level == 2 %}
+                    <tr class="jumbotron">
+                        <td><h3>{{ structure.position }}</h3></td>
+                    </tr>
+                    {% if structure.users is empty %}
+                        <tr>
+                            <td><p>Wakat</p></td>
+                        </tr>
+                    {% else %}
+                        {% for user in structure.users %}
+                            {% if user.email is defined %}
+                                <tr>
+                                    <td>{{ user.email }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            <tr>
+                <td style="text-align: center;" colspan="1">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+            </tr>
+
+            {% for structure in structures %}
+                {% if structure.level == 3 %}
+                    <tr class="jumbotron">
+                        <td><h3>{{ structure.position }}</h3></td>
+                    </tr>
+                    {% if structure.users is empty %}
+                        <tr>
+                            <td><p>Wakat</p></td>
+                        </tr>
+                    {% else %}
+                        {% for user in structure.users %}
+                            {% if user.email is defined %}
+                                <tr>
+                                    <td>{{ user.email }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+9
+            <tr>
+                <td style="text-align: center;" colspan="1">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </td>
+            </tr>
+
+            <tr class="jumbotron">
+            {% for structure in structures %}
+                <td>
+                {% if structure.level == 4 %}
+                    <tr><td>{{ structure.position }}</td></tr>
+                    {% if structure.users is empty %}
+                        <tr><td>Wakat</td></tr>
+                    {% else %}
+                        {% for user in structure.users %}
+                            {% if user.email is defined %}
+                                    <td>{{ user.email }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+                </td>
+            {% endfor %}
+            </tr>
 
 
 
 
-{% for user in users %}
 
-
-    {% if user.structure.position is defined %}
-        {{ user.structure.position }}
-        {% endif %}
-
-{% endfor %}
+        </table>
+    </div>
+{% endblock %}
