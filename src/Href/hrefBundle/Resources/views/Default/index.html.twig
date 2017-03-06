@@ -8,114 +8,224 @@
 {% endblock %}
 
 {% block body %}
+
+    {#<div class="container">#}
+    {#<table class="table table-bordered">#}
+
+
+    {#{% for item in gm %}#}
+    {#<tr class="jumbotron">#}
+    {#<td colspan="2"><h3>{{ item.position }}</h3></td>#}
+    {#</tr>#}
+    {#{% if item is empty %}#}
+    {#<tr>#}
+    {#<td colspan="2"><p>Wakat</p></td>#}
+    {#</tr>#}
+    {#{% else %}#}
+    {#{% for user in item.users %}#}
+    {#{% if user.email is defined %}#}
+    {#<tr>#}
+    {#<td colspan="2">{{ user.email }}</td>#}
+    {#</tr>#}
+    {#{% endif %}#}
+    {#{% endfor %}#}
+    {#{% endif %}#}
+    {#{% endfor %}#}
+    {#<tr>#}
+    {#<td style="text-align: center;" colspan="2">#}
+    {#<span class="glyphicon glyphicon-arrow-down"></span>#}
+    {#</td>#}
+    {#</tr>#}
+
+
+
     <div class="container">
         <table class="table table-bordered">
 
 
-            {% for structure in structures %}
-                {% if structure.level == 1 %}
-                    <tr class="jumbotron">
-                        <td><h3>{{ structure.position }}</h3></td>
+            {% for item in gm %}
+                <tr class="jumbotron">
+                    <td colspan="{{ dmCount }}"><b>{{ item.position }}</b> {{ item.symbol }}</b></td>
+                </tr>
+                {% if item is empty %}
+                    <tr>
+                        <td colspan="{{ dmCount }}"><p>Wakat</p></td>
                     </tr>
-                    {% if structure.users is empty %}
-                        <tr>
-                            <td><p>Wakat</p></td>
-                        </tr>
-                    {% else %}
-                        {% for user in structure.users %}
-                            {% if user.email is defined %}
-                                <tr>
-                                    <td>{{ user.email }}</td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
+                {% else %}
+                    {% for user in item.users %}
+                        {% if user.email is defined %}
+                            <tr>
+                                <td class="n" colspan="{{ dmCount }}"><a
+                                            href="/user/{{ user.id }}/show">{{ user.email }}</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
             {% endfor %}
             <tr>
-                <td style="text-align: center;" colspan="1">
+                <td style="text-align: center;" colspan="{{ dmCount }}">
                     <span class="glyphicon glyphicon-arrow-down"></span>
                 </td>
             </tr>
 
 
-            {% for structure in structures %}
-                {% if structure.level == 2 %}
-                    <tr class="jumbotron">
-                        <td><h3>{{ structure.position }}</h3></td>
+            {% for item in bud %}
+
+                <tr class="jumbotron">
+                    <td colspan="{{ dmCount }}"><b>{{ item.position }} {{ item.symbol }}</b></td>
+                </tr>
+                {% if item.users is empty %}
+                    <tr>
+                        <td colspan="{{ dmCount }}"><p>Wakat</p></td>
                     </tr>
-                    {% if structure.users is empty %}
-                        <tr>
-                            <td><p>Wakat</p></td>
-                        </tr>
-                    {% else %}
-                        {% for user in structure.users %}
-                            {% if user.email is defined %}
-                                <tr>
-                                    <td>{{ user.email }}</td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
+                {% else %}
+                    {% for user in item.users %}
+                        {% if user.email is defined %}
+                            <tr>
+                                <td class="n" colspan="{{ dmCount }}"><a
+                                            href="/user/{{ user.id }}/show">{{ user.email }}</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
+
             {% endfor %}
 
             <tr>
-                <td style="text-align: center;" colspan="1">
+                <td style="text-align: center;" colspan="{{ dmCount }}">
                     <span class="glyphicon glyphicon-arrow-down"></span>
                 </td>
             </tr>
 
-            {% for structure in structures %}
-                {% if structure.level == 3 %}
-                    <tr class="jumbotron">
-                        <td><h3>{{ structure.position }}</h3></td>
+            {% for item in ff %}
+
+                <tr class="jumbotron">
+                    <td colspan="{{ dmCount }}"><b>{{ item.position }} {{ item.symbol }}</b></td>
+                </tr>
+                {% if item.users is empty %}
+                    <tr>
+                        <td colspan="{{ dmCount }}"><p>Wakat</p></td>
                     </tr>
-                    {% if structure.users is empty %}
-                        <tr>
-                            <td><p>Wakat</p></td>
-                        </tr>
-                    {% else %}
-                        {% for user in structure.users %}
-                            {% if user.email is defined %}
-                                <tr>
-                                    <td>{{ user.email }}</td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
+                {% else %}
+                    {% for user in item.users %}
+                        {% if user.email is defined %}
+                            <tr>
+                                <td class="n" colspan="{{ dmCount }}"><a
+                                            href="/user/{{ user.id }}/show">{{ user.email }}</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
+
             {% endfor %}
-9
+
             <tr>
-                <td style="text-align: center;" colspan="1">
+                {% for i in 0..7 %}
+                    <td style="text-align: center;">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                {% endfor %}
+            </tr>
+
+
+            <tr>
+                {% for item in dm %}
+                    <td>
+                        <table class="table table-stripped">
+                            <tr class="jumbotron">
+                                <td><b>{{ item.position }} <br>{{ item.symbol }}</b></td>
+                            </tr>
+                            {% if item.users is empty %}
+                                <tr>
+                                    <td class="warning">Wakat</td>
+                                </tr>
+                            {% else %}
+                                {% for user in item.users %}
+                                    {% if user.email is defined %}
+                                        <tr>
+                                            <td class="n"><a href="/user/{{ user.id }}/show">{{ user.email }}</a></td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </table>
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td style="text-align: center;" colspan="{{ dmCount }}">
                     <span class="glyphicon glyphicon-arrow-down"></span>
                 </td>
             </tr>
 
-            <tr class="jumbotron">
-            {% for structure in structures %}
+            <tr>
                 <td>
-                {% if structure.level == 4 %}
-                    <tr><td>{{ structure.position }}</td></tr>
-                    {% if structure.users is empty %}
-                        <tr><td>Wakat</td></tr>
-                    {% else %}
-                        {% for user in structure.users %}
-                            {% if user.email is defined %}
-                                    <td>{{ user.email }}</td>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
+
+            {% for item in rep %}
+                {% if item.superior == 'R0' %}
+
+
+                    <table class="table table-stripped">
+                        <tr class="jumbotron">
+                            <td><b>{{ item.position }} <br>{{ item.symbol }}</b></td>
+                        </tr>
+                        {% if item.users is empty %}
+                            <tr>
+                                <td class="warning">Wakat</td>
+                            </tr>
+                        {% else %}
+                            {% for user in item.users %}
+                                {% if user.email is defined %}
+                                    <tr>
+                                        <td class="n"><a
+                                                    href="/user/{{ user.id }}/show">{{ user.email }}</a> {{ item.superior }}
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                    </table>
                 {% endif %}
+                {% endfor %}
+
                 </td>
-            {% endfor %}
-            </tr>
+            <td>
+                {% for item in rep %}
+                {% if item.superior == 5 %}
 
 
+                    <table class="table table-stripped">
 
+                        <tr class="jumbotron">
+                            <td><b>{{ item.position }} <br>{{ item.symbol }}</b></td>
+                        </tr>
+                        {% if item.users is empty %}
+                            <tr>
+                                <td class="warning">Wakat</td>
+                            </tr>
+                        {% else %}
+                            {% for user in item.users %}
+                                {% if user.email is defined %}
+                                    <tr>
+                                        <td class="n"><a
+                                                    href="/user/{{ user.id }}/show">{{ user.email }}</a>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+
+
+                {% endif %}
+                {% endfor %}
+
+            </td>
 
 
         </table>
+        </tr>
     </div>
 {% endblock %}

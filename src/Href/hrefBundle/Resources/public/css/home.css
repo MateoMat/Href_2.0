@@ -1,4 +1,18 @@
-td{
+td {
     text-align: center;
+    padding: 0px;
 }
 
+.tab123 {
+    text-align: center;
+    padding:0px;
+    margin:0px;
+}
+
+.warning{
+    color: darkorange;
+}
+
+.n{
+    background-color:palegreen;
+}
