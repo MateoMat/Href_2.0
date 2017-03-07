@@ -16,5 +16,5 @@ Href\hrefBundle\Entity\Structure:
   fields:
     position: {type: string}
     symbol: {type: string}
-    superior: {type: integer}
+    superior: {type: string}
     level: {type: integer}

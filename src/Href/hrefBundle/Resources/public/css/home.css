@@ -14,5 +14,62 @@ td {
 }
 
 .n{
-    background-color:palegreen;
+    background-color:white;
+    color:green;
+}
+
+.level1{
+    background-color: darkviolet;
+    color:white;
+}
+
+.level2{
+    background-color: blueviolet;
+    color:white;
+}
+
+.level3{
+    background-color: mediumvioletred;
+    color:white;
+}
+
+.level4{
+    background-color: violet;
+    color:white;
+}
+
+.level5{
+    background-color: palevioletred;
+    color:white;
+}
+.container{
+    width:auto;
+
+    padding:20px;
+    height: 100vh;
+}
+
+.sidebar-menu{
+
+    width:20vh;
+    height: 100vh;
+    border:solid;
+    float:left;
+
+
+}
+
+.content{
+
+
+    background-color: #0000F0;
+    height:110vh;
+    display: inline-block;
+    padding:30px;
+
+}
+
+.logo{
+    width:150px;
+    padding:5px;
 }

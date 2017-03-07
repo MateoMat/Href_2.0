@@ -1,46 +1,70 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="col col-sm-4">
-    <h1>Informacje o użytkowniku:</h1>
 
-    <table class="table table-bordered">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
+<div style="padding:50px;">
+        <h1>Informacje o użytkowniku:</h1>
+        {% if user.structure.superior == app.user.structure.symbol or app.user.structure.level < 3 %}
+            <div>
+                <button onclick="location.href='{{ path('default') }}'" type="button" class="btn btn-primary">
+                    Strona główna
+                </button>
 
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
+
+                <button onclick="location.href='{{ path('user_edit', { 'id': user.id }) }}'" type="button" class="btn btn-primary">
+                    Edytuj
+                </button>
+
+
+                {{ form_start(delete_form) }}
+                <input class="btn btn-primary" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+
+            </div>
+            <div>
+            <table style="border-color: black;border-style: solid">
+                <tbody>
                 <tr>
-                <th>Stanowisko</th>
-                <td>{{ user.structure.position }}</td>
-            </tr>
-            <tr>
-                <th>Symbol w strukturze</th>
-                <td>{{ user.structure }}</td>
-            </tr>
-        </tbody>
-    </table>
+                    <th>Id</th>
+                    <td>{{ user.id }}</td>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-    </div>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
+                <tr>
+                    <th>Stanowisko</th>
+                    <td>{{ user.structure.position }}</td>
+                </tr>
+                <tr>
+                    <th>Id użytkownika</th>
+                    <td>{{ user.structure }}</td>
+                </tr>
+                <tr>
+                    <th>Symbol stanowiska</th>
+                    <td> {{ user.structure.symbol }}</td>
+                </tr>
+                <tr>
+                    <th>Przełożony</th>
+                    <td>{{ user.structure.superior }} </td>
+                </tr>
+                </tbody>
+            </table>
+
+            </div>
+
+        {% else %}
+
+            <p>Dostęp wzbroniony</p>
+
+        {% endif %}
+</div>
 {% endblock %}
+
+
+
+

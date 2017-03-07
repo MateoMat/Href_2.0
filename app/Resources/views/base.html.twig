@@ -1,29 +1,42 @@
 <!DOCTYPE html>
+<html lang="pl">
 <html>
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}HRef{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('app-touch-icon.png') }}" />
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {#{#}
+    {#<!-- Latest compiled and minified CSS -->#}
+    {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
+          {#integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-
+    <link rel="stylesheet" href="{{ asset('bundles/href/css/home.css') }}"/>
 </head>
 <body>
 {% block menu %}
-    <div class="container"></div>
-    <div class="jumbotron col-sm-12" style="padding:20px">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <img src="{{ asset('href.png') }}" style=" width:120px;padding:5px;"> <a class="navbar-brand" href="/"></a>
+    <div class="container">
+
+        <div class="navbar-header">
+
+            {#<div class="container-fluid">#}
+
+                    <img src="{{ asset('href.png') }}" class="logo"> <a  href="/"></a>
+                    <div style="float:right">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                        <p style="color:white">{{ app.user.email }}</p>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    {% endif %}
+                    </div>
                 </div>
+
+            <div class="sidebar-menu">
+                <nav class="">
                 <ul class="nav navbar-nav" style="margin-top: 5px;margin-left: 15px;">
                     <li class="active"><a href="/">Home</a></li>
                     <li class="dropdown">
@@ -39,9 +52,9 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="/">Użytkownicy
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/profile/show">Mój profil</a></li>
-                            <li><a href="/showAllUsers">Wszyscy użytkownicy</a></li>
-                            <li><a href="/register">Dodaj użytkownika</a></li>
+                            <li><a href="/user/{{ app.user.id }}/show">Mój profil</a></li>
+                            <li><a href="/user">Wszyscy użytkownicy</a></li>
+                            <li><a href="/user/new">Dodaj użytkownika</a></li>
                             <li><a href="/resetting/request">Resetuj</a></li>
                             <li><a href="/group/list">Grupy</a></li>
 
@@ -50,20 +63,12 @@
 
                     <li><a href="#">Wnioski</a></li>
                 </ul>
-                <div style="float:right">
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                        <a href="{{ path('fos_user_security_logout') }}">
-                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                        </a>
-                        <p style="color:white">{{ app.user.email }}</p>
-                    {% else %}
-                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                    {% endif %}
-                </div>
+                </nav>
+
             </div>
-        </nav>
-    </div>
+
+
+
 {% endblock %}
 {% block body %}
 
@@ -76,7 +81,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">#}
+    {#<link href="https://rawgit.com/dabeng/OrgChart/master/dist/css/jquery.orgchart.css" rel="stylesheet"/>#}
 {% endblock %}
 </body>
 </html>

@@ -22,6 +22,7 @@ class DefaultController extends Controller
         $rep = $em->findByLevel(5);
 
         $level4Count=count($dm);
+        $level5Count=count($rep);
 
 
         return $this->render('hrefBundle:Default:index.html.twig', array(
@@ -32,7 +33,8 @@ class DefaultController extends Controller
             'ff' => $ff,
             'dm' => $dm,
             'rep' => $rep,
-            'dmCount'=>$level4Count
+            'dmCount'=>$level4Count,
+            'repCount'=>$level5Count
         ));
     }
 }
