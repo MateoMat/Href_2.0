@@ -29,8 +29,8 @@ td {
 }
 
 .level3{
-    background-color: mediumvioletred;
-    color:white;
+    text-align: left;
+
 }
 
 .level4{
@@ -51,21 +51,25 @@ td {
 
 .sidebar-menu{
 
-    width:20vh;
-    height: 100vh;
+    width:24vh;
+    height: auto;
     border:solid;
     float:left;
-
+    padding:0px !important;
+    margin-left: 0%;
+    color:black !important;
 
 }
 
 .content{
 
 
-    background-color: #0000F0;
-    height:110vh;
+    border:solid;
+    height:auto;
+    width:75%;
     display: inline-block;
     padding:30px;
+    margin-left: 5vh;
 
 }
 

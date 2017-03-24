@@ -5,19 +5,24 @@
     <meta charset="UTF-8" />
     <title>{% block title %}HRef{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block stylesheets %}{% endblock %}
-    {#{#}
-    {#<!-- Latest compiled and minified CSS -->#}
-    {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
-          {#integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
+    {% endblock %}
 
+    {% block javascripts %}
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    {% endblock %}
     <link rel="stylesheet" href="{{ asset('bundles/href/css/home.css') }}"/>
 </head>
 <body>
 {% block menu %}
     <div class="container">
 
-        <div class="navbar-header">
+        <div class="navbar">
 
             {#<div class="container-fluid">#}
 
@@ -35,23 +40,24 @@
                     </div>
                 </div>
 
-            <div class="sidebar-menu">
+            <div class="sidebar-menu jumbotron">
                 <nav class="">
                 <ul class="nav navbar-nav" style="margin-top: 5px;margin-left: 15px;">
-                    <li class="active"><a href="/">Home</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="/">Struktura
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                    <li ><a href="/">Home</a></li>
+                    <li class="">
+                        <a href="/">Struktura
+                            </a>
+                        <ul class="">
                             <li><a href="/structure">Lista</a></li>
                             <li><a href="/structure/new">Dodaj stanowisko</a></li>
 
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="/">Użytkownicy
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                    <li>
+
+                        <a href="/">Użytkownicy
+                            <ul>
+                            </a>
                             <li><a href="/user/{{ app.user.id }}/show">Mój profil</a></li>
                             <li><a href="/user">Wszyscy użytkownicy</a></li>
                             <li><a href="/user/new">Dodaj użytkownika</a></li>
@@ -76,13 +82,6 @@
 
 
 {% endblock %}
-{% block javascripts %}
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">#}
-    {#<link href="https://rawgit.com/dabeng/OrgChart/master/dist/css/jquery.orgchart.css" rel="stylesheet"/>#}
-{% endblock %}
+
 </body>
 </html>
