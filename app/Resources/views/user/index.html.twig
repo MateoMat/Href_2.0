@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ parent() }}
+<div class="content jumbotron">
 <div class="col col-sm-4">
-    <h1>Lista wszystkich użytkowników</h1>
+    <h3>Lista wszystkich użytkowników</h3>
 
     <table class="table table-bordered">
         <thead>
@@ -39,5 +41,6 @@
             <a href="{{ path('user_new') }}">Create a new user</a>
         </li>
     </ul>
+</div>
 </div>
 {% endblock %}

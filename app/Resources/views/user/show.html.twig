@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ parent() }}
 
-<div style="padding:50px;">
-        <h1>Informacje o użytkowniku:</h1>
+    <div class="content jumbotron">
+        <h3>Informacje o użytkowniku:</h3>
         {% if user.structure.superior == app.user.structure.symbol or app.user.structure.level < 3 %}
             <div>
                 <button onclick="location.href='{{ path('default') }}'" type="button" class="btn btn-primary">

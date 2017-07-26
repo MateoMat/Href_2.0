@@ -1,16 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Structure creation</h1>
+    {{ parent() }}
+    <div class="content jumbotron">
+        <h3>Dodaj stanowisko :</h3>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <div class="form-inline">
 
-    <ul>
-        <li>
-            <a href="{{ path('structure_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <div class="form-group">
+            {{ form_start(form) }}
+        {{ form_widget(form.position,{'attr': {'class': 'form-control','placeholder':'Podaj pozycję'}}) }}
+            <br>
+        {{ form_widget(form.symbol, {'attr': {'class': 'form-control','placeholder':'Podaj symbol stanowiska'}}) }}
+            <br>
+        {{ form_widget(form.superior, {'attr': {'class': 'form-control','placeholder':'Podaj symbol przełożónego'}}) }}
+            <br>
+        {{ form_widget(form.level, {'attr': {'class': 'form-control','placeholder':'Podaj poziom stanowiska'}}) }}
+        </div>
+            <br><br>
+        <input type="submit" value="Create" class="btn btn-primary"/>
+
+
+        {{ form_end(form) }}
+
+
+        <ul>
+            <br>
+            <li>
+                <a href="{{ path('structure_index') }}">Back to the list</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+    </div>
 {% endblock %}
